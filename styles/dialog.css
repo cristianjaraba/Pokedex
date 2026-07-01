@@ -1,0 +1,244 @@
+dialog{
+    font-family: Arial, Helvetica, sans-serif;
+    color: var(--bg-color);
+
+    width: 300px;
+    height: 600px;
+
+    background-color: #7AC943;
+
+    border: none;
+    border-radius: 20px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    padding: 0px;
+
+    outline: black 2px solid;
+}
+
+.pokemon-basic-data-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+
+    height: 40%;
+
+    padding: 0px 10px;
+}
+
+.dialog-id-container{
+    align-self: flex-end;
+
+    font-size: 1rem;
+}
+
+.controls-container{
+    display: flex;
+    justify-content: space-between;
+
+    width: 100%;
+
+    padding-top: 20px;
+}
+
+.controls-container button{
+    background-color: transparent;
+    border: none;
+}
+
+.controls-container button:hover{
+    background-color: transparent;
+    border: none;
+}
+
+.dialog-name-container{
+    font-weight: 700;
+    text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.25);
+    font-size: 1.75rem;
+
+    text-transform: capitalize;
+
+    align-self: flex-start;
+}
+
+.dialog-type-container{
+    display: flex;
+    gap: 10px;
+
+    align-self: flex-start;
+}
+
+.dialog-type{
+    font-size: 1rem;
+
+    background-color:rgba(255, 255, 255, 0.2);
+
+    border-radius: 10px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5px;
+
+    /* https://smoothshadows.com/#djEsMSw1LDAuMDgsMjQsMCwwLCMwMzA3MTIsI2YzZjRmNiwjZmZmZmZmLDI%3D */
+    box-shadow: 0px 0px 1px rgba(3, 7, 18, 0.02),
+        0px 0px 4px rgba(3, 7, 18, 0.03),
+        0px 0px 9px rgba(3, 7, 18, 0.05),
+        0px 0px 15px rgba(3, 7, 18, 0.06),
+        0px 0px 24px rgba(3, 7, 18, 0.08);
+
+}
+
+dialog img{
+    height: 100px;
+    width: 100px;
+    margin-bottom: -10px;
+
+    z-index: 9999;
+}
+
+.pokemon-values-container{
+    width: 100%;
+    height: 60%;
+
+    background-color: var(--bg-color);
+
+    border-radius: 20px;
+
+    color: black;
+}
+
+.tabs-container{
+
+    display: flex;
+}
+.tabs-container button {
+    font-size: 0.75rem;
+    font-family: Arial, Helvetica, sans-serif;
+
+    background: inherit;
+    color: black;
+    border-top: solid 2px transparent;
+    border-left: solid 2px transparent;
+    border-right: solid 2px transparent;
+    border-bottom: rgb(37 37 208 / 18%) 2px solid;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
+}
+
+.tabs-container button:hover{
+    border-top: solid 2px transparent;
+    border-left: solid 2px transparent;
+    border-right: solid 2px transparent;
+    border-bottom: rgb(37 37 208 / 18%) 2px solid;
+}
+.about1,
+.about2,
+.states{
+    font-size: 0.75rem;
+    font-family: Arial, Helvetica, sans-serif;
+
+    padding: 0px 10px;
+}
+
+.about1,
+.about2,
+.states{
+text-align: left;
+width: 100%;
+}
+
+/* .about1 tr,
+.about2 tr{
+display: flex;
+justify-content: space-between;
+} */
+
+.about1 th,
+.about2 th,
+.states th{
+width: 80px;
+}
+
+.gender{
+    display: flex;
+    gap: 5px;
+}
+
+#about h2,
+.type-defenses-title{
+    padding: 10px 10px;
+    font-size: 1rem;
+}
+
+.evolution h2{
+    padding: 0px 10px;
+    font-size: 1rem;
+}
+.about-btn:focus,                
+.states-btn:focus,
+.evo-btn:focus,
+.moves-btn{
+border-bottom: rgba(37, 37, 208, 0.822) 2px solid;
+}
+
+.about-btn:hover,                
+.states-btn:hover,
+.evo-btn:hover,
+.moves-btn:hover{
+border-bottom: rgba(37, 37, 208, 0.822) 2px solid !important;
+}
+
+.about-btn,                
+.states-btn,
+.evo-btn,
+.moves-btn{
+/* padding: 20px 0px; */
+}
+
+.type-defenses-text{
+    font-size: 0.75rem;
+    padding: 0px 10px;
+}
+
+.progress-bar{
+    height: 10px;
+    width: 150px;
+
+    background-color: red;
+
+    border: none;
+
+    border-radius: 10px;
+
+     background: linear-gradient(
+        to right,
+        red 0%,
+        red 20%,
+        rgb(37 37 208 / 18%) 20%,
+        rgb(37 37 208 / 18%) 100%
+    );
+}
+
+.evo-container{
+    margin-top: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.evolution img{
+ height: 60px;
+ width: 60px;
+}
+
+
+th, td{
+    padding: 5px 0px;
+}

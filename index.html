@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pokédex</title>
 
+    <link rel="stylesheet" href="./styles/dialog.css">
     <link rel="shortcut icon" href="./assets/images/pokeball-favicon.png" type="image/x-icon">
     <link rel="stylesheet" href="./styles/standard.css">
     <link rel="stylesheet" href="./style.css">
@@ -34,6 +35,166 @@
         </div>
         <button id="btn" onclick="showMorePokemons()">+ 20 </button>
     </main>
+
+    <dialog open>
+
+        <div class="pokemon-basic-data-container">
+
+            <div class="controls-container">
+                <button>⬅️</button>
+                <button>🤍</button>
+                <button>➡️</button>
+            </div>
+
+            <div class="dialog-id-container">
+                <span id="dialog-pokemon-id">#3</span>
+            </div>
+
+            <div class="dialog-name-container">
+                <span id="dialog-pokemon-name">Charizard</span>
+            </div>
+
+            <div id="dialog-type-container" class="dialog-type-container">
+                <div class="dialog-type">
+                    <span>grass</span>
+                </div>
+                <div class="dialog-type">
+                    <span>grass</span>
+                </div>
+            </div>
+            <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/6.svg"
+                alt="">
+        </div>
+
+        <div class="pokemon-values-container">
+
+            <div class="tabs-container">
+                <button class="about-btn"  onclick="openTable('about')">About</button>
+                <button class="states-btn" onclick="openTable('base-states')">Base States</button>
+                <button class="evo-btn" onclick="openTable('evolution')">Evolution</button>
+                <button class="moves-btn"  onclick="openTable('moves')">Moves</button>
+            </div>
+
+            <div id="about" class="about-table-container tab">
+                <table class="about1">
+                    <tr>
+                        <th>Species</th>
+                        <td>lorem ipsum</td>
+                    </tr>
+                    <tr>
+                        <th>Height</th>
+                        <td>lorem ipsum</td>
+                    </tr>
+                    <tr>
+                        <th>Weight</th>
+                        <td>lorem ipsum</td>
+                    </tr>
+                    <tr>
+                        <th>Abilities</th>
+                        <td>lorem ipsum</td>
+                    </tr>
+                </table>
+
+                <h2 class="breeding">Breeding</h2>
+
+                <table class="about2">
+                    <tr>
+                        <th>Gender</th>
+                        <td>
+                            <div class="gender">
+                                <div>♂️ <span>87.5%</span></div>
+                                <div>♀️ <span>12.5%</span></div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Egg Groups</th>
+                        <td>lorem ipsum</td>
+                    </tr>
+                    <tr>
+                        <th>Egg Cycle</th>
+                        <td>lorem ipsum</td>
+                    </tr>
+                </table>
+            </div>
+
+            <div id="base-states" class="states-table-container tab" style="display:none">
+                <table class="states">
+                    <tr>
+                        <th>HP</th>
+                        <td>20</td>
+                        <td>
+                            <div class="progress-bar">
+
+                            </div>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <th>Attack</th>
+                        <td>55</td>
+                        
+                    </tr>
+
+                    <tr>
+                        <th>Defense</th>
+                        <td>80</td>
+                        
+                    </tr>
+
+                    <tr>
+                        <th>Sp.Atk</th>
+                        <td>65</td>
+                        
+                    </tr>
+
+                    <tr>
+                        <th>Sp.Def</th>
+                        <td>70</td>
+                        
+                    </tr>
+
+                    <tr>
+                        <th>Speed</th>
+                        <td>90</td>
+                       
+                    </tr>
+
+                    <tr>
+                        <th>Total</th>
+                        <td>380</td>
+                    </tr>
+                </table>
+
+                <h2 class="type-defenses-title">Type defenses</h2>
+                <span class="type-defenses-text">Lorem ipsum.....</span>
+            </div>
+
+            <div id="evolution" class="evolution tab" style="display:none">
+                <h2>Evolution</h2>
+                <div class="evo-container">
+                    <div class="evo1">
+                        <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/18.svg" alt="">
+                    </div>
+                    ⏪
+                    <div class="evo2">
+                        <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/18.svg" alt="">
+                    </div>
+                    ⏩
+                    <div class="evo3">
+                        <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/18.svg" alt="">
+                    </div>
+                </div>
+            </div>
+
+            <div id="moves" class="moves-container tab" style="display:none">
+                <h2>Moves</h2>
+                <p>Tokyo is the capital of Japan.</p>
+            </div>
+        </div>
+
+    </dialog>
+
     <footer class="main-footer">
         <svg role="img" aria-labelledby="DA-Logo-Title DA-Logo-Desc" viewBox="0 0 154 44" fill="none"
             xmlns="http://www.w3.org/2000/svg">

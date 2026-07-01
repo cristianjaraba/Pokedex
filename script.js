@@ -1,59 +1,83 @@
 let allPokemons = [];
 
-function init() {
-    document.getElementById('cards-container').innerHTML = '';
-    for (let index = 1; index < 41; index++) {
-        fetchPokemon(index);
+async function init() {
+    await fetchAndLoadPokemons();
+    renderCards(allPokemons);
+}
+
+async function fetchAndLoadPokemons() {
+    for (let index = 1; index < 21; index++) {
+        const url = `https://pokeapi.co/api/v2/pokemon/${index}`;
+        const response = await fetch(url);
+        const data = await response.json();
+        allPokemons.push(data);
+        document.getElementById('loading-spinner').style.display = 'none';
     }
 }
 
-async function fetchPokemon(id) {
-    const url = `https://pokeapi.co/api/v2/pokemon/${id}`
-    const response = await fetch(url);
-    const data = await response.json();
-    document.getElementById('loading-spinner').style.display = 'none';
-    renderCard(data);
-    allPokemons.push(data);
-}
-
-function renderCard(data) {
-    document.getElementById('cards-container').innerHTML += getCardTemplate(
-        data.id,
-        data.name,
-        data.types[0].type.name,
-        data.sprites.other.dream_world.front_default);
-    for (let index = 0; index < data.types.length; index++) {
-        document.getElementById(`type-container-${data.id}`).innerHTML += getTypeTemplate(data.types[index].type.name)
+function renderCards(allPokemons) {
+    for (let index = 0; index < allPokemons.length; index++) {
+        document.getElementById('cards-container').innerHTML += getCardTemplate(
+            allPokemons[index].id,
+            allPokemons[index].name,
+            allPokemons[index].types[0].type.name,
+            allPokemons[index].sprites.other.dream_world.front_default);
+        for (let j = 0; j < allPokemons[index].types.length; j++) {
+            document.getElementById(`type-container-${allPokemons[index].id}`).innerHTML += 
+            getTypeTemplate(allPokemons[index].types[j].type.name)
+        }
     }
 }
 
 function filterPokemons() {
-    const filterWord = document.getElementById('search').value; 
+    const filterWord = document.getElementById('search').value;
     if (filterWord.length < 3 && filterWord != '') {
         return;
     }
     document.getElementById('cards-container').innerHTML = '';
-    for (let index = 0; index < allPokemons.length; index++) {
-       if (allPokemons[index].name.startsWith(filterWord.toLowerCase())) {
-        renderCard(allPokemons[index])
-       }
+    let filteredPokemonsList = allPokemons.filter(pokemon => pokemon.name.startsWith(filterWord.toLowerCase()));
+    if (filteredPokemonsList.length == 0) {
+        document.getElementById('cards-container').innerHTML = 'Keine Pokemons gefunden.'
     }
-    if ( document.getElementById('cards-container').innerHTML == '') {
-         document.getElementById('cards-container').innerHTML = 'Keine Pokemons gefunden.'
+    else{
+        renderCards(filteredPokemonsList);
     }
-    disAbleBtn(filterWord);
+    if (filterWord != '') {
+        hidePlusBtn();
+    }
+    else {showPlusBtn();}
 }
 
-function disAbleBtn(filterWord) {
-    if (filterWord == '') {
-        document.getElementById('btn').disabled = false;
-    } else {
-        document.getElementById('btn').disabled = true;
-    }  
+function hidePlusBtn() {
+    document.getElementById('btn').style.visibility = 'hidden';
 }
 
-function showMorePokemons() {
-    for (let index = allPokemons.length + 1; index < allPokemons.length + 21; index++) {
-        fetchPokemon(index);
+function showPlusBtn() {
+    document.getElementById('btn').style.visibility = 'visible';
+}
+
+async function fetchMorePokemons() {  
+    let startId = allPokemons.length + 1;
+    let endId = allPokemons.length + 21;
+    for (let index = startId; index < endId; index++) {
+        const url = `https://pokeapi.co/api/v2/pokemon/${index}`;
+        const response = await fetch(url);
+        const data = await response.json();
+        allPokemons.push(data);
     }
+}
+
+async function showMorePokemons() {
+    await fetchMorePokemons();
+    renderCards(allPokemons.slice(-20));
+}
+
+function openTable(tabName) {
+    let tabsList = document.getElementsByClassName("tab");
+
+    for (let i = 0; i < tabsList.length; i++) {
+        tabsList[i].style.display = "none";
+    }
+
+    document.getElementById(tabName).style.display = "block";
 }
