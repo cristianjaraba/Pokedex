@@ -36,62 +36,96 @@
         <button id="btn" onclick="showMorePokemons()">+ 20 </button>
     </main>
 
-    <dialog open>
+    <dialog closedby="any" id="dialog">
 
-        <div class="pokemon-basic-data-container">
-
+        <div id="pokemon-basic-data-container" class="pokemon-basic-data-container">
+            <svg onclick="closeDialog()" class="close-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+                width="150" height="150" fill="none" stroke="black" stroke-width="1" stroke-linecap="round">
+                <path d="M8 8L16 16" />
+                <path d="M16 8L8 16" />
+            </svg>
             <div class="controls-container">
-                <button>⬅️</button>
-                <button>🤍</button>
-                <button>➡️</button>
+                <button id="previous" onclick="showPrevious()">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="none"
+                        stroke="#000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M15 18l-6-6 6-6" />
+                    </svg>
+                </button>
+                <button onclick="like()" id="not-liked">
+                    <svg class="empty-heart" xmlns="http://www.w3.org/2000/svg" viewBox="0 -30 645 645" width="800px"
+                        height="800px">
+                        <path
+                            d="M297.297 550.868c-13.774-15.437-48.17-45.529-76.435-66.874-83.744-63.242-95.142-72.395-129.144-103.703-62.684-57.721-89.305-115.71-89.213-194.34.044-38.384 2.66-53.172 13.409-75.797C34.152 71.768 61.015 43.245 95.36 25.799c24.326-12.355 36.323-17.845 76.945-18.07 42.493-.235 51.438 4.72 76.435 18.452 30.424 16.714 61.739 52.436 68.213 77.811l3.998 15.672 9.859-21.584c55.716-121.973 233.599-120.148 295.502 3.031 19.638 39.076 21.794 122.513 4.381 169.513-22.716 61.309-65.38 108.05-164.007 179.676-64.681 46.974-137.885 118.046-142.98 128.028-5.916 11.589-.283 1.817-26.409-27.46z"
+                            fill="none" stroke="black" stroke-width="18" stroke-linejoin="round" />
+                    </svg>
+                </button>
+                <button onclick="dislike()" style="display: none;" id="liked">
+                    <svg class="full-heart" xmlns="http://www.w3.org/2000/svg" viewBox="0 -30 645 645" width="800px"
+                        height="800px">
+
+
+                        <path
+                            d="M297.297 550.868c-13.774-15.437-48.17-45.529-76.435-66.874-83.744-63.242-95.142-72.395-129.144-103.703-62.684-57.721-89.305-115.71-89.213-194.34.044-38.384 2.66-53.172 13.409-75.797C34.152 71.768 61.015 43.245 95.36 25.799c24.326-12.355 36.323-17.845 76.945-18.07 42.493-.235 51.438 4.72 76.435 18.452 30.424 16.714 61.739 52.436 68.213 77.811l3.998 15.672 9.859-21.584c55.716-121.973 233.599-120.148 295.502 3.031 19.638 39.076 21.794 122.513 4.381 169.513-22.716 61.309-65.38 108.05-164.007 179.676-64.681 46.974-137.885 118.046-142.98 128.028-5.916 11.589-.283 1.817-26.409-27.46z"
+                            fill="red" />
+
+                        <path
+                            d="M297.297 550.868c-13.774-15.437-48.17-45.529-76.435-66.874-83.744-63.242-95.142-72.395-129.144-103.703-62.684-57.721-89.305-115.71-89.213-194.34.044-38.384 2.66-53.172 13.409-75.797C34.152 71.768 61.015 43.245 95.36 25.799c24.326-12.355 36.323-17.845 76.945-18.07 42.493-.235 51.438 4.72 76.435 18.452 30.424 16.714 61.739 52.436 68.213 77.811l3.998 15.672 9.859-21.584c55.716-121.973 233.599-120.148 295.502 3.031 19.638 39.076 21.794 122.513 4.381 169.513-22.716 61.309-65.38 108.05-164.007 179.676-64.681 46.974-137.885 118.046-142.98 128.028-5.916 11.589-.283 1.817-26.409-27.46z"
+                            fill="none" stroke="black" stroke-width="18" stroke-linejoin="round" />
+                    </svg>
+                </button>
+                <button id="next" onclick="showNext()">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="none"
+                        stroke="#000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M9 18l6-6-6-6" />
+                    </svg>
+                </button>
             </div>
+
 
             <div class="dialog-id-container">
-                <span id="dialog-pokemon-id">#3</span>
+                <span id="dialog-pokemon-id"></span>
             </div>
 
+
             <div class="dialog-name-container">
-                <span id="dialog-pokemon-name">Charizard</span>
+                <span id="dialog-pokemon-name"></span>
             </div>
 
             <div id="dialog-type-container" class="dialog-type-container">
-                <div class="dialog-type">
-                    <span>grass</span>
-                </div>
-                <div class="dialog-type">
-                    <span>grass</span>
-                </div>
+
             </div>
-            <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/6.svg"
+            <img id="dialog-img"
+                src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/6.svg"
                 alt="">
         </div>
 
         <div class="pokemon-values-container">
 
             <div class="tabs-container">
-                <button class="about-btn"  onclick="openTable('about')">About</button>
+                <button class="about-btn" onclick="openTable('about')">About</button>
                 <button class="states-btn" onclick="openTable('base-states')">Base States</button>
                 <button class="evo-btn" onclick="openTable('evolution')">Evolution</button>
-                <button class="moves-btn"  onclick="openTable('moves')">Moves</button>
             </div>
+
+
 
             <div id="about" class="about-table-container tab">
                 <table class="about1">
                     <tr>
                         <th>Species</th>
-                        <td>lorem ipsum</td>
+                        <td id="species"></td>
                     </tr>
                     <tr>
                         <th>Height</th>
-                        <td>lorem ipsum</td>
+                        <td id="height"></td>
                     </tr>
                     <tr>
                         <th>Weight</th>
-                        <td>lorem ipsum</td>
+                        <td id="weight"></td>
                     </tr>
                     <tr>
                         <th>Abilities</th>
-                        <td>lorem ipsum</td>
+                        <td id="abilities"></td>
                     </tr>
                 </table>
 
@@ -102,29 +136,26 @@
                         <th>Gender</th>
                         <td>
                             <div class="gender">
-                                <div>♂️ <span>87.5%</span></div>
-                                <div>♀️ <span>12.5%</span></div>
+                                <div>♂️ <span id="male"></span></div>
+                                <div>♀️ <span id="female"></span></div>
                             </div>
                         </td>
                     </tr>
                     <tr>
                         <th>Egg Groups</th>
-                        <td>lorem ipsum</td>
-                    </tr>
-                    <tr>
-                        <th>Egg Cycle</th>
-                        <td>lorem ipsum</td>
+                        <td id="egg-groups"></td>
                     </tr>
                 </table>
+
             </div>
 
             <div id="base-states" class="states-table-container tab" style="display:none">
                 <table class="states">
                     <tr>
                         <th>HP</th>
-                        <td>20</td>
+                        <td id="hp"></td>
                         <td>
-                            <div class="progress-bar">
+                            <div id="hp-progress-bar" class="progress-bar">
 
                             </div>
                         </td>
@@ -132,64 +163,71 @@
 
                     <tr>
                         <th>Attack</th>
-                        <td>55</td>
-                        
+                        <td id="attack"></td>
+                        <td>
+                            <div id="attack-progress-bar" class="progress-bar">
+
+                            </div>
+                        </td>
                     </tr>
 
                     <tr>
                         <th>Defense</th>
-                        <td>80</td>
-                        
+                        <td id="defense"></td>
+                        <td>
+                            <div id="defense-progress-bar" class="progress-bar">
+
+                            </div>
+                        </td>
                     </tr>
 
                     <tr>
                         <th>Sp.Atk</th>
-                        <td>65</td>
-                        
+                        <td id="sp-attack"></td>
+                        <td>
+                            <div id="sp-attack-progress-bar" class="progress-bar">
+
+                            </div>
+                        </td>
                     </tr>
 
                     <tr>
                         <th>Sp.Def</th>
-                        <td>70</td>
-                        
+                        <td id="sp-def"></td>
+                        <td>
+                            <div id="sp-def-progress-bar" class="progress-bar">
+
+                            </div>
+                        </td>
                     </tr>
 
                     <tr>
                         <th>Speed</th>
-                        <td>90</td>
-                       
+                        <td id="speed"></td>
+                        <td>
+                            <div id="speed-progress-bar" class="progress-bar">
+
+                            </div>
+                        </td>
                     </tr>
 
                     <tr>
                         <th>Total</th>
-                        <td>380</td>
+                        <td id="total"></td>
+                        <td>
+                            <div id="total-progress-bar" class="progress-bar">
+
+                            </div>
+                        </td>
                     </tr>
                 </table>
-
-                <h2 class="type-defenses-title">Type defenses</h2>
-                <span class="type-defenses-text">Lorem ipsum.....</span>
             </div>
 
             <div id="evolution" class="evolution tab" style="display:none">
                 <h2>Evolution</h2>
-                <div class="evo-container">
-                    <div class="evo1">
-                        <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/18.svg" alt="">
-                    </div>
-                    ⏪
-                    <div class="evo2">
-                        <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/18.svg" alt="">
-                    </div>
-                    ⏩
-                    <div class="evo3">
-                        <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/18.svg" alt="">
-                    </div>
-                </div>
-            </div>
+                <div id="evo-container" class="evo-container">
 
-            <div id="moves" class="moves-container tab" style="display:none">
-                <h2>Moves</h2>
-                <p>Tokyo is the capital of Japan.</p>
+                </div>
             </div>
         </div>
 

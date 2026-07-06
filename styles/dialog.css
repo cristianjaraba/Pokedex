@@ -1,61 +1,63 @@
-dialog{
+dialog {
     font-family: Arial, Helvetica, sans-serif;
     color: var(--bg-color);
-
     width: 300px;
-    height: 600px;
-
-    background-color: #7AC943;
-
+    height: 575px;
+   
     border: none;
     border-radius: 20px;
-
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-
     padding: 0px;
-
-    outline: black 2px solid;
 }
 
-.pokemon-basic-data-container{
+dialog {
+    position: fixed;
+    inset: 0;
+    margin: auto;
+}
+
+dialog:not([open]) {
+    display: none;
+}
+
+.pokemon-basic-data-container {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    /* justify-content: space-between; */
     align-items: center;
-
-    height: 40%;
-
+    height: 45%;
     padding: 0px 10px;
+
+    border-;
 }
 
-.dialog-id-container{
+.dialog-id-container {
     align-self: flex-end;
 
     font-size: 1rem;
 }
 
-.controls-container{
+.controls-container {
     display: flex;
     justify-content: space-between;
-
     width: 100%;
-
-    padding-top: 20px;
+    /* padding-top: 20px; */
+    height: 55px;
 }
 
-.controls-container button{
+.controls-container button {
     background-color: transparent;
     border: none;
 }
 
-.controls-container button:hover{
+.controls-container button:hover {
     background-color: transparent;
     border: none;
 }
 
-.dialog-name-container{
+.dialog-name-container {
     font-weight: 700;
     text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.25);
     font-size: 1.75rem;
@@ -65,17 +67,17 @@ dialog{
     align-self: flex-start;
 }
 
-.dialog-type-container{
+.dialog-type-container {
     display: flex;
     gap: 10px;
 
     align-self: flex-start;
 }
 
-.dialog-type{
+.dialog-type {
     font-size: 1rem;
 
-    background-color:rgba(255, 255, 255, 0.2);
+    background-color: rgba(255, 255, 255, 0.2);
 
     border-radius: 10px;
 
@@ -93,33 +95,34 @@ dialog{
 
 }
 
-dialog img{
+dialog img {
     height: 100px;
     width: 100px;
     margin-bottom: -10px;
-
     z-index: 9999;
+    /* flex: 1; */
 }
 
-.pokemon-values-container{
+.pokemon-values-container {
     width: 100%;
-    height: 60%;
-
+    height: 55%;
     background-color: var(--bg-color);
-
-    border-radius: 20px;
-
+    border-radius: 20px !important;
     color: black;
 }
 
-.tabs-container{
+.tabs-container {
 
-    display: flex;
+display: flex;
+
+align-items: center;
+
+justify-content: center;
 }
+
 .tabs-container button {
     font-size: 0.75rem;
     font-family: Arial, Helvetica, sans-serif;
-
     background: inherit;
     color: black;
     border-top: solid 2px transparent;
@@ -130,17 +133,20 @@ dialog img{
     border-top-right-radius: 20px;
     border-bottom-left-radius: 0px;
     border-bottom-right-radius: 0px;
+    /* padding-bottom: 25px; */
+    padding-top: 30px;
 }
 
-.tabs-container button:hover{
+.tabs-container button:hover {
     border-top: solid 2px transparent;
     border-left: solid 2px transparent;
     border-right: solid 2px transparent;
     border-bottom: rgb(37 37 208 / 18%) 2px solid;
 }
+
 .about1,
 .about2,
-.states{
+.states {
     font-size: 0.75rem;
     font-family: Arial, Helvetica, sans-serif;
 
@@ -149,9 +155,9 @@ dialog img{
 
 .about1,
 .about2,
-.states{
-text-align: left;
-width: 100%;
+.states {
+    text-align: left;
+    width: 100%;
 }
 
 /* .about1 tr,
@@ -162,52 +168,53 @@ justify-content: space-between;
 
 .about1 th,
 .about2 th,
-.states th{
-width: 80px;
+.states th {
+    width: 80px;
 }
 
-.gender{
+.gender {
     display: flex;
     gap: 5px;
 }
 
 #about h2,
-.type-defenses-title{
+.type-defenses-title {
     padding: 10px 10px;
     font-size: 1rem;
 }
 
-.evolution h2{
+.evolution h2 {
     padding: 0px 10px;
     font-size: 1rem;
 }
-.about-btn:focus,                
+
+.about-btn:focus,
 .states-btn:focus,
 .evo-btn:focus,
-.moves-btn{
-border-bottom: rgba(37, 37, 208, 0.822) 2px solid;
+.moves-btn {
+    border-bottom: rgba(37, 37, 208, 0.822) 2px solid;
 }
 
-.about-btn:hover,                
+.about-btn:hover,
 .states-btn:hover,
 .evo-btn:hover,
-.moves-btn:hover{
-border-bottom: rgba(37, 37, 208, 0.822) 2px solid !important;
+.moves-btn:hover {
+    border-bottom: rgba(37, 37, 208, 0.822) 2px solid !important;
 }
 
-.about-btn,                
+.about-btn,
 .states-btn,
 .evo-btn,
-.moves-btn{
-/* padding: 20px 0px; */
+.moves-btn {
+    /* padding: 20px 0px; */
 }
 
-.type-defenses-text{
+.type-defenses-text {
     font-size: 0.75rem;
     padding: 0px 10px;
 }
 
-.progress-bar{
+.progress-bar {
     height: 10px;
     width: 150px;
 
@@ -217,28 +224,82 @@ border-bottom: rgba(37, 37, 208, 0.822) 2px solid !important;
 
     border-radius: 10px;
 
-     background: linear-gradient(
+    /* background: linear-gradient(
         to right,
         red 0%,
         red 20%,
         rgb(37 37 208 / 18%) 20%,
         rgb(37 37 208 / 18%) 100%
-    );
+    ); */
 }
 
-.evo-container{
-    margin-top: 50px;
+.evo-container {
+    margin-top: 75px;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-.evolution img{
- height: 60px;
- width: 60px;
+.evolution img {
+    height: 60px;
+    width: 60px;
 }
 
 
-th, td{
+th,
+td {
     padding: 5px 0px;
+}
+
+#not-liked,
+#liked {
+    background-color: transparent;
+    height: 50px;
+    width: 50px;
+
+    cursor: pointer;
+}
+
+#not-liked>svg,
+#liked>svg {
+    height: 25px;
+    width: 25px;
+}
+
+.close-icon {
+
+    height: 25px;
+
+    width: 25px;
+
+    align-self: flex-end;
+
+    /* padding-top: 0px; */
+
+    margin-top: 10px;
+
+    cursor: pointer;
+}
+
+
+
+.close-icon:hover,
+#previous:hover svg path,
+#next:hover svg path {
+    stroke: var(--bg-color);
+}
+
+.close-icon:active,
+#previous:active svg path,
+#next:active svg path {
+    stroke: black;
+}
+.empty-heart:hover path {
+    stroke: red;
+}
+
+.evo1,
+.evo2,
+.evo3{
+    cursor: pointer;
 }
