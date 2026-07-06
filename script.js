@@ -6,13 +6,21 @@ async function init() {
 }
 
 async function fetchAndLoadPokemons() {
+    let promises = []
     for (let index = 1; index < 21; index++) {
         const url = `https://pokeapi.co/api/v2/pokemon/${index}`;
-        const response = await fetch(url);
-        const data = await response.json();
-        allPokemons.push(data);
-        document.getElementById('loading-spinner').style.display = 'none';
+        promises.push(fetch(url));
+        
     }
+
+    const responses = await Promise.all(promises);
+    const pokemons = [];
+    for (const response of responses){
+        pokemons.push(await response.json());
+    }
+
+    allPokemons = pokemons;
+    document.getElementById('loading-spinner').style.display = 'none';
     addLikeProperty();
 }
 
