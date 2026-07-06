@@ -2,7 +2,7 @@
 :root {
     --bg-color: #fffdf7;
     --bg-footer: rgba(9, 33, 42, 1);
-    --bg-header: rgba(9, 33, 42, 1);
+    --bg-header: #09212a;
     --footer-color: rgba(153, 172, 179, 1);
     /* --bg-dialog: rgba(9, 33, 42, 1); */
 }
@@ -73,6 +73,22 @@ input#search {
 
 .search-container {
     padding-top: 20px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.lupe{
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background-color: inherit;
+
+    padding: 0px;
+    margin: 0px;
 }
 
 .cards-container {
@@ -135,7 +151,7 @@ input#search {
 
     font-weight: 700;
     text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.25);
-    font-size: 1rem;
+    font-size: 1.25rem;
 
     text-transform: capitalize;
 }
@@ -152,7 +168,7 @@ input#search {
     justify-content: flex-start;
     gap: 5px;
 
-    font-size: 0.5rem;
+    font-size: 1rem;
 }
 
 .type {
@@ -326,6 +342,8 @@ button:hover {
     animation-iteration-count: infinite;
     animation-timing-function: linear;
     animation-play-state: running;
+
+    padding-bottom: 20px;
 }
 
 /* Responsive design */
@@ -342,3 +360,6 @@ button:hover {
         width: 100px;
     }
 }
+
+
+

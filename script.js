@@ -39,12 +39,13 @@ function renderCards(allPokemons) {
 function filterPokemons() {
     const filterWord = document.getElementById('search').value;
     if (filterWord.length < 3 && filterWord != '') {
+        document.getElementById('cards-container').innerHTML = 'Enter at least 3 letters.'
         return;
     }
     document.getElementById('cards-container').innerHTML = '';
     let filteredPokemonsList = allPokemons.filter(pokemon => pokemon.name.startsWith(filterWord.toLowerCase()));
     if (filteredPokemonsList.length == 0) {
-        document.getElementById('cards-container').innerHTML = 'Keine Pokemons gefunden.'
+        document.getElementById('cards-container').innerHTML = 'No Pokemons found.'
     }
     else {
         renderCards(filteredPokemonsList);
@@ -64,6 +65,8 @@ function showPlusBtn() {
 }
 
 async function fetchMorePokemons() {
+    document.getElementById('loading-spinner').style.display = 'flex';
+    document.getElementById('btn').style.display = 'none';
     let startId = allPokemons.length + 1;
     let endId = allPokemons.length + 21;
     for (let index = startId; index < endId; index++) {
@@ -73,6 +76,8 @@ async function fetchMorePokemons() {
         data.liked = false;
         allPokemons.push(data);
     }
+    document.getElementById('loading-spinner').style.display = 'none';
+    document.getElementById('btn').style.display = 'flex';
 }
 
 async function showMorePokemons() {
@@ -92,8 +97,8 @@ function openTable(tabName) {
 
 async function openDialog(id) {
     document.getElementById('dialog').showModal();
-    await renderTab1(id);
-    renderTab2(id);
+    await renderAbout(id);
+    renderStates(id);
     checkLikedOrNot(id);
     resetOpenedTabs();
     changeBgColorDialog(id);
@@ -123,7 +128,7 @@ function resetOpenedTabs() {
     document.getElementById('about').style.display = "block";
 }
 
-async function renderTab1(id) {
+async function renderAbout(id) {
     let currentPokemon = getCurrentPokemon(id);
     let specie = await fetchSpecie(currentPokemon);
     let englishSpecieName = getSpecieName(specie);
@@ -135,7 +140,7 @@ async function renderTab1(id) {
     renderAbout2(currentPokemon, specie, englishSpecieName, abilities, eggGroups);
 }
 
-function renderTab2(id) {
+function renderStates(id) {
     let currentPokemon = getCurrentPokemon(id);
     let hp = Number(((currentPokemon.stats[0].base_stat / 255) * 100).toFixed(0));
     let attack = Number(((currentPokemon.stats[1].base_stat / 255) * 100).toFixed(0));
